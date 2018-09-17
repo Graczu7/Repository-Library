@@ -4,9 +4,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+
 @Entity
-@Table(name = "author")
-public class Author implements Serializable {
+@Table(name = "borrower")
+public class Borrower implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +19,13 @@ public class Author implements Serializable {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "birth_place", nullable = false)
-    private String birth_place;
+    @OneToOne
+    @JoinColumn(name = "borrower_details")
+    private Borrower_details borrower_details;
 
-    @OneToMany(mappedBy = "author")
-    private List<Book> books;
+    @OneToMany(mappedBy = "borrower")
+    private List<Borrow> borrows;
+
 
     public Long getID() {
         return ID;
@@ -48,20 +51,19 @@ public class Author implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getBirth_place() {
-        return birth_place;
+    public List<Borrow> getBorrows() {
+        return borrows;
     }
 
-    public void setBirth_place(String birth_place) {
-        this.birth_place = birth_place;
+    public void setBorrows(List<Borrow> borrows) {
+        this.borrows = borrows;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public Borrower_details getBorrower_details() {
+        return borrower_details;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setBorrower_details(Borrower_details borrower_details) {
+        this.borrower_details = borrower_details;
     }
 }
-
