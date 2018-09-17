@@ -25,7 +25,7 @@ public class Book implements Serializable {
     @Column(name = "pages", nullable = false)
     private Integer pages;
 
-    @Column(name = "relase_date", nullable = false)
+    @Column(name = "release_date", nullable = false)
     private Date relase_date;
 
     @Column(name = "summary", nullable = false)

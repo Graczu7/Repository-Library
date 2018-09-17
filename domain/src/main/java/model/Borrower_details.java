@@ -15,11 +15,11 @@ public class Borrower_details implements Serializable {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "email", nullable = false)
-    private String email;
-
     @Column(name = "phone", nullable = false)
-    private Date phone;
+    private String phone;
+
+    @Column(name = "email", nullable = false)
+    private Date email;
 
     @OneToOne(mappedBy = "borrower_details")
     private Borrower borrower;
@@ -40,20 +40,20 @@ public class Borrower_details implements Serializable {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Date getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Date phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Date getEmail() {
+        return email;
+    }
+
+    public void setEmail(Date email) {
+        this.email = email;
     }
 
     public Borrower getBorrower() {

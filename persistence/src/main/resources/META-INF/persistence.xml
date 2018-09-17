@@ -5,6 +5,11 @@
              version="2.1">
     <persistence-unit name="examplePersistenceUnit"
                       transaction-type="RESOURCE_LOCAL">
+        <class>model.Author</class>
+        <class>model.Book</class>
+        <class>model.Borrow</class>
+        <class>model.Borrower</class>
+        <class>model.Borrower_details</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/company" />
             <property name="javax.persistence.jdbc.user" value="root" />

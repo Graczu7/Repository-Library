@@ -1,4 +1,11 @@
 package repository;
 
-public class BorrowerRepository {
+import javax.persistence.EntityManager;
+
+public class BorrowerRepository extends GenericDao{
+
+    public BorrowerRepository(EntityManager entityManager) {
+        super(entityManager);
+    }
+
 }
