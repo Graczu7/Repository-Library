@@ -10,7 +10,7 @@
 
 <body>
 <jsp:include page=“WEB-INF/header.jsp”/>
-<form action=“/servlets.ActionButtonServlet” method=“post”>
+<form action=“HomeServlet” method=“POST”>
     <table class=“table”>
         <thead class=“thead-light”>
         <tr>
