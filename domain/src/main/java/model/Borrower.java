@@ -21,7 +21,7 @@ public class Borrower implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "borrower_details")
-    private Borrower_details borrower_details;
+    private BorrowerDetails borrower_details;
 
     @OneToMany(mappedBy = "borrower")
     private List<Borrow> borrows;
@@ -59,11 +59,11 @@ public class Borrower implements Serializable {
         this.borrows = borrows;
     }
 
-    public Borrower_details getBorrower_details() {
+    public BorrowerDetails getBorrower_details() {
         return borrower_details;
     }
 
-    public void setBorrower_details(Borrower_details borrower_details) {
+    public void setBorrower_details(BorrowerDetails borrower_details) {
         this.borrower_details = borrower_details;
     }
 }

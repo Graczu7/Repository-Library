@@ -1,9 +1,10 @@
 package repository;
 
-import javax.persistence.EntityManager;
-import java.awt.print.Book;
+import model.Borrow;
 
-public class BorrowRepository extends GenericDao <Book, Long>{
+import javax.persistence.EntityManager;
+
+public class BorrowRepository extends GenericDao <Borrow, Long>{
 
     public BorrowRepository(EntityManager entityManager) {
         super(entityManager);

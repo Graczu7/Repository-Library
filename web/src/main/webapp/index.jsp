@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<jsp:include page=“WEB-INF/header.jsp”/>
+<jsp:include page="WEB-INF/header.jsp"/>
 <form action=“HomeServlet” method=“POST”>
     <table class=“table”>
         <thead class=“thead-light”>
@@ -23,7 +23,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var=“book” items=“${requestScope.book}“>
+        <c:forEach var="book" items="${requestScope.book}">
         <tr>
             <td>${book.title}</td>
             <td>${book.author_id.first_name}</td>

@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "book")
-public class Borrower_details implements Serializable {
+@Table(name = "borrower_details")
+public class BorrowerDetails implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
