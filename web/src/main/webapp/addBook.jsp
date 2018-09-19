@@ -21,12 +21,11 @@
     </div>
     <div class="form-group">
         <label for="exampleInputPages1">Pages</label>
-        <input type=number" class="form-control" id="exampleInputPages1" name="pages" placeholder="Pages">
+        <input type="number" class="form-control" id="exampleInputPages1" name="pages" placeholder="Pages">
     </div>
-
     <div class="form-group">
         <label for="exampleInputRelease_date1">Release date</label>
-        <input type="email" class="form-control" id="exampleInputRelease_date1" aria-describedby="emailHelp" name="release_date" placeholder="Release_date">
+        <input type="number" class="form-control" id="exampleInputRelease_date1" aria-describedby="emailHelp" name="release_date" placeholder="Release_date">
     </div>
     <div class="form-group">
         <label for="exampleInputSummary1">Summary</label>
@@ -36,9 +35,9 @@
         <label for="exampleInputTitle1">Title</label>
         <input type="text" class="form-control" id="exampleInputTitle1" name="title" placeholder="Title">
     </div>
-    <div class=“btn-group” role=“group”>
-        <button type=“submit” class=“btn btn-secondary” name=“action” value=“add”>Add</button>
-        <button type=“submit” class=“btn btn-secondary” name=“action” value=“edit”>Cancel</button>
+    <div class=“btn-group” role="group">
+        <button type="submit" class="btn btn-secondary" name="action" value="add">Add</button>
+        <button type="button" class="btn btn-danger" name="action" value="cancel">Cancel</button>
     </div>
 </form>
 </body>

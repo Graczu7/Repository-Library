@@ -19,7 +19,7 @@ public class Book implements Serializable {
     @Column(name = "category", nullable = false)
     private String category;
 
-    @Column(name = "isbn", nullable = false)
+    @Column(name = "isbn", nullable = false, unique = true)
     private Date isbn;
 
     @Column(name = "pages", nullable = false)
