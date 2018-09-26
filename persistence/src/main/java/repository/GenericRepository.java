@@ -1,19 +1,23 @@
 package repository;
 
+
+
+import util.PersistenceUtil;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.lang.reflect.ParameterizedType;
 
-public abstract class GenericDao<T, K> {
+public abstract class GenericRepository<T, K> {
 
     protected final EntityManager em;
     protected final Class<T> entityClass;
 
     @SuppressWarnings("unchecked")
-    protected GenericDao(EntityManager entityManager) {
+    protected GenericRepository() {
         ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
         this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
-        this.em = entityManager;
+        em = PersistenceUtil.getEntityManager();
     }
 
     public void create(T entity) {
@@ -31,8 +35,7 @@ public abstract class GenericDao<T, K> {
     }
 
     public T read(K id) {
-        return em.find(entityClass
-                , id);
+        return em.find(entityClass, id);
     }
 
     public void update(T entity) {

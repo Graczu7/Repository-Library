@@ -1,11 +1,28 @@
 package repository;
 
-import javax.persistence.EntityManager;
-import java.awt.print.Book;
+import model.Book;
 
-public class BookRepository extends GenericDao<Book, Long>{
+import java.util.List;
 
-    public BookRepository(EntityManager entityManager) {
-        super(entityManager);
+public class BookRepository extends GenericRepository<Book, Long> implements IBookRepository {
+
+    @Override
+    public List<Book> findAllBook() {
+        return em.createQuery("select b from Book b", Book.class).getResultList();
+    }
+
+    @Override
+    public void addBook(Book book) {
+        create(book);
+    }
+
+    @Override
+    public Book findBookById(Long id) {
+        return read(id);
+    }
+
+    @Override
+    public void editBook(Book book) {
+        update(book);
     }
 }

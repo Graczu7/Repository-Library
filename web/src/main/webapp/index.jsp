@@ -1,47 +1,46 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
-        pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Project Library</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Title</title>
+    <link href="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" type="text/css"
+          rel="stylesheet">
 </head>
-
 <body>
-<%--<jsp:include page="WEB-INF/header.jsp"/>--%>
-<form action="HomeServlet" method="POST">
-    <table class="table">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">ISBN</th>
-            <th scope="col">Category</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="book" items="${requestScope.book}">
-        <tr>
-            <td>${book.title}</td>
-            <td>${book.author_id.first_name}</td>
-            <td>${book.author_id.last_name}</td>
-            <td>${book.isbn}</td>
-            <td>${book.category}</td>
-            <td><input type="radio" name="checkboxBookChoice" value=${book.id_book}>
-            </td>
-        </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-    <div class="btn-group" role="group">
-        <button type="submit" class="btn btn-secondary" name="action" value="add">Add</button>
-        <button type="submit" class="btn btn-secondary" name="action" value="edit">Edit</button>
-        <button type="submit" class="btn btn-secondary" name="action" value="delete">Delete</button>
-        <button type="submit" class="btn btn-secondary" name="action" value="show">Show</button>
-    </div>
-</form>
+<div class="container">
+    <form action="/HomeServlet" method="post">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Lp.</th>
+                <th>Title</th>
+                <th>Isbn</th>
+                <th>Category</th>
+                <th>Release</th>
+                <th>Pages</th>
+                <th>Author</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${requestScope.books}" var="book" varStatus="loop">
+            <tr>
+                <td>${loop.index + 1}</td>
+                <td>${book.title}</td>
+                <td>${book.isbn}</td>
+                <td>${book.category}</td>
+                <td>${book.release}</td>
+                <td>${book.pages}</td>
+                <td>${book.authorName}</td>
+                <td><input class="form-check-input" type="radio" name="bookId" value="${book.id}" checked></td>
+            </tr>
+            </tbody>
+            </c:forEach>
+        </table>
+        <input type="submit" class="btn btn-info" name="action" value="ADD">
+        <input type="submit" class="btn btn-warning" name="action" value="EDIT">
+        <input type="submit" class="btn btn-dark" name="action" value="SHOW">
+        <input type="submit" class="btn btn-danger" name="action" value="DELETE">
+    </form>
+</div>
 </body>
 </html>
