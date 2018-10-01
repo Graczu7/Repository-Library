@@ -7,10 +7,10 @@ import javax.persistence.Persistence;
 
 public class AuthorRepositoryTest {
 
-    @Test
-    public void testInitRepository(){
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        AuthorRepository authorRepository = new AuthorRepository(entityManager);
-    }
+//    @Test
+//    public void testInitRepository(){
+//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
+//        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//        AuthorRepository authorRepository = new AuthorRepository(entityManager);
+//    }
 }

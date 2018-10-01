@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 public class BorrowRepository extends GenericRepository<Borrow, Long> {
 
-    public BorrowRepository(EntityManager entityManager) {
-        super(entityManager);
-    }
+//    public BorrowRepository(EntityManager entityManager) {
+//        super(entityManager);
+//    }
 }

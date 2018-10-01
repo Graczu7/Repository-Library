@@ -7,10 +7,10 @@ import javax.persistence.Persistence;
 
 public class BorrowerRepositoryTest {
 
-    @Test
-    public void testInitRepository(){
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        BorrowerRepository borrowerRepository = new BorrowerRepository(entityManager);
-    }
+//    @Test
+//    public void testInitRepository(){
+//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("examplePersistenceUnit");
+//        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//        BorrowerRepository borrowerRepository = new BorrowerRepository(entityManager);
+//    }
 }
