@@ -1,9 +1,12 @@
 package dto;
 
-import com.sun.istack.internal.NotNull;
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
+@Getter
+@Setter
 public class BorrowDto {
 
     @NotNull

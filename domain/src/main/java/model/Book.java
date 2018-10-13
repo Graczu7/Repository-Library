@@ -4,35 +4,51 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
+@Entity
+@Table(name = "book")
 @Getter
 @Setter
-@Entity
-public class Book {
+public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_book")
     private Long id;
 
+    @Column(nullable = false)
     private String title;
 
     @Column(name = "release_date")
     private LocalDate release;
 
-    private boolean borrow;
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+    private Set<Borrow> borrows;
 
-    @Column(nullable = false, unique = true, length = 13)
+    @Column(name = "borrow")
+    private Boolean borrow = false;
+
+    @Column(name = "isbn", length = 13, unique = true, nullable = false)
     private String isbn;
-
-    @Enumerated(EnumType.STRING)
-    private BookType category;
-
-    private String description;
-
-    private Integer pages;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private Author author;
+    private model.Author author;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category")
+    private BookType category;
+
+    @Column(name = "pages")
+    private Integer pages;
+
+    @Column(name = "summary", length = 350)
+    private String summary;
+
+    public Boolean isBorrow() {
+        return borrow;
+    }
 }

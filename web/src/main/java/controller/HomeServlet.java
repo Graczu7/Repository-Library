@@ -1,6 +1,7 @@
 package controller;
 
 import dto.BookDto;
+import model.Action;
 import service.BookService;
 import service.IBookService;
 
@@ -18,29 +19,34 @@ public class HomeServlet extends HttpServlet {
     private final IBookService bookService;
 
     public HomeServlet() {
-        this.bookService = new BookService();
+        bookService = new BookService();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        String bookId = request.getParameter("bookId");
+        Action action = Action.valueOf(request.getParameter("action"));
+        Long bookId = Long.valueOf(request.getParameter("bookId"));
 
         switch (action) {
-            case "ADD":
+            case ADD:
+                response.sendRedirect("/AddBookServlet");
                 break;
-            case "EDIT":
+            case EDIT:
+                response.sendRedirect("/EditBookServlet?bookId=" + bookId);
                 break;
-            case "SHOW":
+            case SHOW:
+                response.sendRedirect("/ShowBookDetailsServlet?bookId=" + bookId);
                 break;
-            case "DELETE":
+            case DELETE:
+                bookService.delete(bookId);
+                response.sendRedirect("/HomeServlet");
                 break;
             default:
-                throw new UnsupportedOperationException("trolololo");
+                throw new UnsupportedOperationException("no action");
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<BookDto> books = bookService.findAllBook();
+        List<BookDto> books = bookService.findAll();
         request.setAttribute("books", books);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }

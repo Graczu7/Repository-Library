@@ -1,18 +1,37 @@
 package repository;
 
 import model.Author;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import util.HibernateUtil;
 
-import java.util.List;
+public class AuthorRepository implements IAuthorRepository {
 
-public class AuthorRepository extends GenericRepository<Author, Long> implements IAuthorRepository {
 
     @Override
-    public List<Author> findAllAuthors() {
-        return em.createQuery("select b from Author b", Author.class).getResultList();
+    public void save(Author author) {
+        Transaction tx = null;
+        try (Session session = HibernateUtil.openSession()) {
+            tx = session.getTransaction();
+            tx.begin();
+            session.persist(author);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        }
     }
 
     @Override
-    public Author findAuthorById(Long id) {
-        return read(id);
+    public Author find(Long authorId) {
+        try (Session session = HibernateUtil.openSession()) {
+            Query query = session.createQuery("select a from Author a where a.id = :id")
+                    .setParameter("id", authorId);
+            return (Author) query.uniqueResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

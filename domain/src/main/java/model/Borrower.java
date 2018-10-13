@@ -1,69 +1,37 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
-
+import java.util.Set;
 
 @Entity
 @Table(name = "borrower")
+@Getter
+@Setter
 public class Borrower implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    @Column(name = "id_borrower")
+    private Long id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
     @OneToOne
-    @JoinColumn(name = "borrower_details")
-    private BorrowerDetails borrower_details;
+    @JoinColumn(name = "borrower_details_id")
+    private BorrowerDetails borrowerDetails;
 
-    @OneToMany(mappedBy = "borrower")
-    private List<Borrow> borrows;
+    @OneToMany(mappedBy = "borrower", fetch = FetchType.EAGER)
+    private Set<model.Borrow> borrows;
 
-
-    public Long getID() {
-        return ID;
-    }
-
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public List<Borrow> getBorrows() {
-        return borrows;
-    }
-
-    public void setBorrows(List<Borrow> borrows) {
-        this.borrows = borrows;
-    }
-
-    public BorrowerDetails getBorrower_details() {
-        return borrower_details;
-    }
-
-    public void setBorrower_details(BorrowerDetails borrower_details) {
-        this.borrower_details = borrower_details;
+    public String getDisplayName () {
+        return this.firstName + " " + this.lastName;
     }
 }

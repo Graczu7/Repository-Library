@@ -4,15 +4,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
+import java.util.Set;
 
-@Setter
-@Getter
+
 @Entity
-public class Author {
+@Table(name = "author")
+@Getter
+@Setter
+public class Author implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_author")
     private Long id;
 
     @Column(name = "first_name", nullable = false)
@@ -21,10 +25,13 @@ public class Author {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @OneToMany(mappedBy = "author")
-    private List<Book> books;
+    @Column(name = "birth_place")
+    private String placeOfBirth;
 
-    public String getDisplayName() {
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    private Set<Book> books;
+
+    public String getDisplayName () {
         return this.firstName + " " + this.lastName;
     }
 }

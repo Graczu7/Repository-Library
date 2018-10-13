@@ -2,15 +2,18 @@ package repository;
 
 import model.Book;
 
+import java.io.Serializable;
 import java.util.List;
 
 public interface IBookRepository {
 
-    List<Book> findAllBook();
+    void save (Book book);
 
-    void addBook(Book book);
+    List<Book> findAll();
 
-    Book findBookById(Long id);
+    Book find(Long bookId);
 
-    void editBook(Book book);
+    void edit(Book book);
+
+    void delete(Serializable bookId);
 }
