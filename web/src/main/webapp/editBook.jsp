@@ -1,44 +1,26 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
-        pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Table rows%cols</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Title</title>
+    <link href="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" type="text/css"
+          rel="stylesheet">
 </head>
 <body>
-<form action="addBookServlet" method="POST">
+<jsp:include page="WEB-INF/fragments/header.jsp"/>
+<div class="container mt-4">
+    <form action="/EditBookServlet" method="post">
+        <jsp:include page="WEB-INF/fragments/form.jsp"/>
+        <input type="hidden" name="authorId" value="${requestScope.book.authorId}">
+        <input type="hidden" name="id" value="${requestScope.book.id}">
+        <input type="submit" value="Edit" class="btn btn-success">
+        <a href="/HomeServlet">
+            <button type="button" class="btn btn-outline-secondary">Cancel</button>
+        </a>
+    </form>
+    <jsp:include page="WEB-INF/fragments/footer.jsp"/>
 
-
-    <div class="form-group">
-        <label for="exampleInputCategory1">Category</label>
-        <input type="text" class="form-control" id="exampleInputCategory1" name="category" placeholder="Category">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputIsbn1">Isbn</label>
-        <input type="text" class="form-control" id="exampleInputIsbn1" name="isbn" placeholder="Isbn">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPages1">Pages</label>
-        <input type="number" class="form-control" id="exampleInputPages1" name="pages" placeholder="Pages">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputRelease_date1">Release date</label>
-        <input type="number" class="form-control" id="exampleInputRelease_date1" aria-describedby="emailHelp" name="release_date" placeholder="Release_date">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputSummary1">Summary</label>
-        <input type="text" class="form-control" id="exampleInputSummary1" name="summary" placeholder="Summary">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputTitle1">Title</label>
-        <input type="text" class="form-control" id="exampleInputTitle1" name="title" placeholder="Title">
-    </div>
-    <div class=“btn-group” role="group">
-        <button type="submit" class="btn btn-secondary" name="action" value="edit">Edit</button>
-        <button type="button" class="btn btn-danger" name="action" value="cancel">Cancel</button>
-    </div>
-</form>
+</div>
 </body>
 </html>

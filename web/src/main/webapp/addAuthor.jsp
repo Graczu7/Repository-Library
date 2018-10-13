@@ -1,32 +1,21 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
-        pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Table rows%cols</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Title</title>
+    <link href="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" type="text/css"
+          rel="stylesheet">
 </head>
 <body>
-<form action="addBookServlet" method="POST">
-
-
+<form action="/AuthorServlet" method="post">
     <div class="form-group">
-        <label for="exampleInputFirst_name1">First name</label>
-        <input type="text" class="form-control" id="exampleInputFirst_name1" name="first_name" placeholder="First_name">
+        <label>Firstname</label>
+        <input type="text" class="form-control" name="firstname">
     </div>
     <div class="form-group">
-        <label for="exampleInputLast_name1">Last name</label>
-        <input type="text" class="form-control" id="exampleInputLast_name1" name="last_name" placeholder="Last_name">
+        <label>Lastname</label>
+        <input type="text" class="form-control" name="lastname">
     </div>
-    <div class="form-group">
-        <label for="exampleInputBirth_place1">Birth place</label>
-        <input type="text" class="form-control" id="exampleInputBirth_place1" name="birth_place" placeholder="Birth_place">
-    </div>
-    <div class=“btn-group” role="group">
-        <button type="submit" class="btn btn-secondary" name="action" value="add">Add</button>
-        <button type="button" class="btn btn-danger" name="action" value="cancel">Cancel</button>
-    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
 </form>
 </body>
 </html>
